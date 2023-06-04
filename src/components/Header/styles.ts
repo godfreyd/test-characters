@@ -2,7 +2,7 @@ import styledEm from "@emotion/styled";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 
-export const StyledHeader = styledEm.div`
+export const StyledHeader = styledEm.header`
   width: 100%;
 `;
 

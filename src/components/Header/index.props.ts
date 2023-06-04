@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export interface IPageProps {
+export interface IHeaderProps {
   children?: ReactNode;
 }

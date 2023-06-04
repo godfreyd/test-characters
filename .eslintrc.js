@@ -5,4 +5,21 @@ module.exports = {
   parserOptions: {
     project: path.resolve(__dirname, "./tsconfig.json"),
   },
+  plugins: ["import"],
+  rules: {
+    "import/order": [
+      "error",
+      {
+        groups: [
+          ["builtin", "external"],
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type",
+        ],
+      },
+    ],
+  },
 };

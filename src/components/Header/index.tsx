@@ -1,11 +1,4 @@
 import { FC, useState } from "react";
-import { IPageProps } from "./index.props";
-import {
-  Search,
-  SearchIconWrapper,
-  StyledHeader,
-  StyledInputBase,
-} from "./styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -19,10 +12,17 @@ import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
 import { Button, ListItemIcon } from "@mui/material";
 import FaceIcon from "@mui/icons-material/Face";
+import {
+  Search,
+  SearchIconWrapper,
+  StyledHeader,
+  StyledInputBase,
+} from "./styles";
+import { IHeaderProps } from "./index.props";
 
 const pages = [{ text: "Character", link: "character" }];
 
-const Header: FC<IPageProps> = ({ children, ...props }) => {
+const Header: FC<IHeaderProps> = ({ children, ...props }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -35,7 +35,7 @@ const Header: FC<IPageProps> = ({ children, ...props }) => {
 
   return (
     <StyledHeader {...props}>
-      <AppBar position="static">
+      <AppBar position="static" component="div">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />

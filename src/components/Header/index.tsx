@@ -9,15 +9,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import SearchIcon from "@mui/icons-material/Search";
 import { Button, ListItemIcon } from "@mui/material";
 import FaceIcon from "@mui/icons-material/Face";
-import {
-  Search,
-  SearchIconWrapper,
-  StyledHeader,
-  StyledInputBase,
-} from "./styles";
+import Search from "../Search";
+import { StyledHeader } from "./styles";
 import { IHeaderProps } from "./index.props";
 
 const pages = [{ text: "Character", link: "character" }];
@@ -136,15 +131,7 @@ const Header: FC<IHeaderProps> = ({ children, ...props }) => {
               ))}
             </Box>
             <Box sx={{ flexGrow: 0 }}>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
+              <Search />
             </Box>
           </Toolbar>
         </Container>

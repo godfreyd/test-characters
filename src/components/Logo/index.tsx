@@ -12,7 +12,7 @@ const Logo: FC<ILogoProps> = ({ variant }) => {
       sx={{
         mr: 2,
         display:
-          variant == "desktop"
+          variant === "desktop"
             ? { xs: "none", md: "flex" }
             : { xs: "flex", md: "none" },
         fontFamily: "monospace",
@@ -20,7 +20,7 @@ const Logo: FC<ILogoProps> = ({ variant }) => {
         letterSpacing: ".3rem",
         color: "inherit",
         textDecoration: "none",
-        flexGrow: variant == "mobile" ? 1 : 0,
+        flexGrow: variant === "mobile" ? 1 : 0,
       }}
     >
       LOGO

@@ -1,8 +1,10 @@
-import React from "react";
 import Page from "../components/Page";
+import usePeoples from "../store/people/hooks/usePeoples";
 
 function Index() {
-  console.log(process.env.REACT_APP_BACKEND_HOST);
+  const { list } = usePeoples();
+
+  console.log(process.env.REACT_APP_BACKEND_HOST, list);
   return <Page></Page>;
 }
 

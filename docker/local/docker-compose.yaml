@@ -1,0 +1,25 @@
+version: '3'
+services:
+  front:
+    image: node:16.13.2-alpine
+    working_dir: '/app'
+    volumes:
+      - ../../:/app
+      - front-deps:/app/node_modules
+    command: sh -c "npm i && mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache && npm run start"
+  nginx:
+    image: nginx
+    ports:
+      - 443:443
+    volumes:
+      - ./nginx/entrypoint.sh:/entrypoint.sh
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf.template
+    environment:
+      NODE_HOST: http://front:3000
+      BACKEND_HOST: https://swapi.dev
+    entrypoint: ["/entrypoint.sh"]
+    command: ["nginx", "-g", "daemon off;"]
+
+volumes:
+  front-deps:

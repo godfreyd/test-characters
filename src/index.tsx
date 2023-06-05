@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { css, Global } from "@emotion/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./components/Theme";
+import RequestProvider from "./services/request/provider";
 
 const IndexPage = lazy(() => import("./pages"));
 const CharacterPage = lazy(() => import("./pages/character"));
@@ -23,12 +24,14 @@ root.render(
       `}
     />
     <ThemeProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<IndexPage />} />
-          <Route path="/character" element={<CharacterPage />} />
-        </Routes>
-      </BrowserRouter>
+      <RequestProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<IndexPage />} />
+            <Route path="/character" element={<CharacterPage />} />
+          </Routes>
+        </BrowserRouter>
+      </RequestProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

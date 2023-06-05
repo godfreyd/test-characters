@@ -23,10 +23,11 @@
   },
   "include": [
     "@types",
-    "./src/**/*",
+    "./src/**/*", "src/components/Logo",
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "build"
   ],
 }

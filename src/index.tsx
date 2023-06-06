@@ -20,6 +20,7 @@ root.render(
         body,
         #root {
           height: 100%;
+          background-color: hsl(216, 19%, 89%);
         }
       `}
     />

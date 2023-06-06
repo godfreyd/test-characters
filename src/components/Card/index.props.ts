@@ -1,1 +1,3 @@
-export interface ICharacterCardProps {}
+export interface ICharacterCardProps {
+  character: any;
+}

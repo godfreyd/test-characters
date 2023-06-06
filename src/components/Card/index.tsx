@@ -11,7 +11,7 @@ import Link from "@mui/material/Link";
 import { purple } from "@mui/material/colors";
 import { ICharacterCardProps } from "./index.props";
 
-const CharacterCard: FC<ICharacterCardProps> = () => {
+const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
   const CARD_PROPERTY = {
     borderRadius: 3,
     boxShadow: 0,
@@ -43,10 +43,10 @@ const CharacterCard: FC<ICharacterCardProps> = () => {
             underline="none"
             sx={{ fontWeight: "medium" }}
           >
-            Emma Johnson
+            {character.name}
           </Link>
         }
-        subheader="September 14, 2016"
+        subheader={`Gender: ${character.gender}`}
       />
       <CardContent sx={{ p: 3 }}>
         <Typography variant="body1" color="black" sx={{ mb: 3 }}>

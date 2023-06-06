@@ -1,3 +1,5 @@
+import { IPeople } from "../../store/people/interfaces/people.interfce";
+
 export interface IGridProps {
-  data?: any;
+  data: IPeople[];
 }

@@ -1,15 +1,32 @@
 import useFetch from "../../../../services/request/hooks/useFetch";
 import { ENDPOINTS } from "../../endpoints";
-import { IPeople } from "../../interfaces/people.interfce";
+import { ICharacter } from "../../interfaces/people.interfce";
 
-const usePeoples = () => {
-  const { data, loading, error } = useFetch<any>({
-    method: "GET",
-    path: ENDPOINTS.LIST,
-  });
+interface IPeople {
+  count: number;
+  next: string;
+  previous: string;
+  results: ICharacter[];
+}
+
+const usePeoples = (pageNumber?: number) => {
+  const { data, loading, error } = useFetch<IPeople>(
+    pageNumber
+      ? {
+          method: "GET",
+          path: ENDPOINTS.LIST,
+          params: {
+            page: pageNumber,
+          },
+        }
+      : {
+          method: "GET",
+          path: ENDPOINTS.LIST,
+        }
+  );
 
   return {
-    list: data?.data || [],
+    list: data?.data,
     loading,
     error,
   };

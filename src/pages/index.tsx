@@ -6,9 +6,9 @@ import PaginationButtons from "../components/PaginationButtons";
 import Loader from "../components/Loader";
 import { StyledContainer } from "./styles";
 function Index() {
-  const { list, loading } = usePeoples();
-  const [people, setPeople] = useState([]);
   const [page, setPage] = useState(1);
+  const { list, loading } = usePeoples(page);
+  const [people, setPeople] = useState<any>([]);
 
   const onHandleChange = useCallback(
     (event: React.ChangeEvent<unknown>, value: number) => {
@@ -18,11 +18,12 @@ function Index() {
   );
 
   useEffect(() => {
-    if (loading || !list.results.length) return;
+    if (loading || !list) return;
 
     setPeople(list.results);
-  }, [list.results]);
+  }, [list]);
 
+  console.log(list);
   return (
     <Page>
       <StyledContainer>
@@ -32,7 +33,7 @@ function Index() {
           <>
             <Grid data={people} />
             <PaginationButtons
-              count={10}
+              count={Math.ceil(Number(list?.count) / 10)}
               page={page}
               onChange={onHandleChange}
             />

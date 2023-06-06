@@ -3,12 +3,12 @@ import { FC } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { purple } from "@mui/material/colors";
+import Avatar from "../Avatar";
 import { ICharacterCardProps } from "./index.props";
 
 const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
@@ -21,15 +21,7 @@ const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
     <Card sx={CARD_PROPERTY}>
       <CardHeader
         sx={{ p: 3 }}
-        avatar={
-          <Avatar
-            sx={{ bgcolor: purple[500], width: 50, height: 50 }}
-            aria-label="recipe"
-            src="https://randomuser.me/api/portraits/women/47.jpg"
-          >
-            E
-          </Avatar>
-        }
+        avatar={<Avatar />}
         action={
           <IconButton aria-label="settings">
             {/* <Icon path={mdiDotsVertical} size={1.3} color="#222" /> */}

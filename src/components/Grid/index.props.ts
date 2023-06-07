@@ -1,4 +1,4 @@
-import { ICharacter } from "../../store/people/interfaces/character.interfce";
+import { ICharacter } from "../../store/character/interfaces/character.interfce";
 
 export interface IGridProps {
   data: ICharacter[];

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import Page from "../components/Page";
-import useCharacters from "../store/people/hooks/useCharacters";
+import useCharacters from "../store/character/hooks/useCharacters";
 import Grid from "../components/Grid";
 import PaginationButtons from "../components/PaginationButtons";
 import Loader from "../components/Loader";

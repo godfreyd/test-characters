@@ -15,19 +15,14 @@ const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
     borderRadius: 3,
     boxShadow: 0,
   };
+  const urlObj = (new URL(character.url));
+  const id = urlObj.pathname.split('/')[3];
 
-  let id = character.url;
-  console.log('url', new URL(id))
   return (
     <Card sx={CARD_PROPERTY}>
       <CardHeader
         sx={{ p: 3 }}
         avatar={<Avatar />}
-        action={
-          <IconButton aria-label="settings">
-            {/* <Icon path={mdiDotsVertical} size={1.3} color="#222" /> */}
-          </IconButton>
-        }
         title={
           <Link
             href="#"
@@ -46,7 +41,7 @@ const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
           This impressive paella is a perfect party dish and a fun meal to cook
           together with your guests. Add 1 cup of frozen..
         </Typography>
-        <Button href={`/character/`} >Read more</Button>
+        <Button href={`/character/${Number(id)}`}>Read more</Button>
       </CardContent>
     </Card>
   );

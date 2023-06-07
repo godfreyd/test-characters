@@ -35,7 +35,6 @@ function IndexPage() {
     setPeople(list.results);
   }, [list]);
 
-  console.log(list)
   const results = useMemo(() => {
     if (loading) return <Loader />;
 
@@ -78,9 +77,7 @@ function IndexPage() {
 
   return (
     <Page search={search} onChange={onChangeSearchInputHandler}>
-      <StyledContainer>
-        {results}
-      </StyledContainer>
+      <StyledContainer>{results}</StyledContainer>
     </Page>
   );
 }

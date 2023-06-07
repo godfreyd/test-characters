@@ -44,6 +44,7 @@ services:
       - ./data:/data/db
 volumes:
   front-deps:
+  data:
 
 networks:
   example-net:

@@ -15,8 +15,8 @@ const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
     borderRadius: 3,
     boxShadow: 0,
   };
-  const urlObj = (new URL(character.url));
-  const id = urlObj.pathname.split('/')[3];
+  const urlObj = new URL(character.url);
+  const id = urlObj.pathname.split("/")[3];
 
   return (
     <Card sx={CARD_PROPERTY}>

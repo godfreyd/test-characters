@@ -10,7 +10,7 @@ const CharacterPage: FC<ICharacterPage> = () => {
   const { data, loading } = useCharacter(Number(id));
 
   console.log(data);
-  
+
   return <Page></Page>;
 };
 

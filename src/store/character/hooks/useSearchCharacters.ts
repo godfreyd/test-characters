@@ -12,13 +12,13 @@ export const useSearchCharacters = (search: string) => {
           method: "GET",
           path: ENDPOINTS.SEARCH_CHARACTERS,
           params: {
-            q: search,
+            search: search,
           },
         }
   );
 
   return {
-    list: data?.data,
+    list: data?.data || [],
     loading,
   };
 };

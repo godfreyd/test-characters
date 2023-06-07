@@ -3,11 +3,11 @@ import Header from "../Header";
 import { IPageProps } from "./index.props";
 import { StyledPage } from "./styles";
 
-const Page: FC<IPageProps> = ({ children, ...props }) => {
+const Page: FC<IPageProps> = ({ children, onChange, search }) => {
   return (
     <>
-      <Header />
-      <StyledPage {...props}>{children}</StyledPage>
+      <Header search={search} onChange={onChange} />
+      <StyledPage>{children}</StyledPage>
     </>
   );
 };

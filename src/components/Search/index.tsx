@@ -1,10 +1,9 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { ISearchProps } from "./index.props";
 import { SearchBase, SearchIconWrapper, StyledInputBase } from "./styles";
 
-const Search: FC<ISearchProps> = () => {
-  const [search, setSearch] = useState("");
+const Search: FC<ISearchProps> = ({ onChange, search }) => {
   return (
     <SearchBase>
       <SearchIconWrapper>
@@ -14,7 +13,7 @@ const Search: FC<ISearchProps> = () => {
         value={search}
         placeholder="Search…"
         inputProps={{ "aria-label": "search" }}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={onChange}
       />
     </SearchBase>
   );

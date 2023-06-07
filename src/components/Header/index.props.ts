@@ -1,5 +1,4 @@
-import { ReactNode } from "react";
-
 export interface IHeaderProps {
-  children?: ReactNode;
+  onChange?: (event: any) => void;
+  search: string;
 }

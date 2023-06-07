@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,8 +18,7 @@ import { IHeaderProps } from "./index.props";
 
 const pages = [{ text: "Character", link: "character" }];
 
-const Header: FC<IHeaderProps> = ({ children, ...props }) => {
-  const [search, setSearch] = useState("");
+const Header: FC<IHeaderProps> = ({ onChange, search }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -31,7 +30,7 @@ const Header: FC<IHeaderProps> = ({ children, ...props }) => {
   };
 
   return (
-    <StyledHeader {...props}>
+    <StyledHeader>
       <AppBar position="static" component="div">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
@@ -100,7 +99,7 @@ const Header: FC<IHeaderProps> = ({ children, ...props }) => {
               ))}
             </Box>
             <Box sx={{ flexGrow: 0 }}>
-              <Search />
+              <Search search={search} onChange={onChange} />
             </Box>
           </Toolbar>
         </Container>

@@ -4,9 +4,7 @@ import { IResults } from "../interfaces/character.interfce";
 
 const MIN_SEARCH_LENGTH = 3;
 
-export const useSearchCharacters = (
-  search: string
-) => {
+export const useSearchCharacters = (search: string) => {
   const { data, loading } = useFetch<IResults>(
     search.length < MIN_SEARCH_LENGTH
       ? null
@@ -15,7 +13,7 @@ export const useSearchCharacters = (
           path: ENDPOINTS.SEARCH_CHARACTERS,
           params: {
             q: search,
-          }
+          },
         }
   );
 

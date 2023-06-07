@@ -7,6 +7,11 @@ services:
       - ../../:/app
       - front-deps:/app/node_modules
     command: sh -c "npm i && mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache && npm run start"
+    networks:
+      - example-net
+    depends_on:
+      - mongo
+
   nginx:
     image: nginx
     ports:
@@ -20,6 +25,26 @@ services:
       BACKEND_HOST: https://swapi.dev
     entrypoint: ["/entrypoint.sh"]
     command: ["nginx", "-g", "daemon off;"]
+    networks:
+      - example-net
+    depends_on:
+      - front
 
+  mongo:
+    image: mongo
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - "0.0.0.0:27017:27017"
+    networks:
+      - example-net
+    volumes:
+      - ./data:/data/db
 volumes:
   front-deps:
+
+networks:
+  example-net:
+    name: example-net

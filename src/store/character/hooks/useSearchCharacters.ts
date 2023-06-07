@@ -18,7 +18,7 @@ export const useSearchCharacters = (search: string) => {
   );
 
   return {
-    list: data?.data || [],
+    list: data?.data,
     loading,
   };
 };

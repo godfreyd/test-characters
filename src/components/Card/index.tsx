@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import { purple } from "@mui/material/colors";
 import Avatar from "../Avatar";
 import { ICharacterCardProps } from "./index.props";
 
@@ -17,6 +16,8 @@ const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
     boxShadow: 0,
   };
 
+  let id = character.url;
+  console.log('url', new URL(id))
   return (
     <Card sx={CARD_PROPERTY}>
       <CardHeader
@@ -45,7 +46,7 @@ const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
           This impressive paella is a perfect party dish and a fun meal to cook
           together with your guests. Add 1 cup of frozen..
         </Typography>
-        <Button>Read more</Button>
+        <Button href={`/character/`} >Read more</Button>
       </CardContent>
     </Card>
   );

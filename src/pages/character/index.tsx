@@ -1,8 +1,19 @@
-import React from "react";
+import { FC } from "react";
+import { useParams } from 'react-router-dom';
 import Page from "../../components/Page";
+import useCharacter from "../../store/character/hooks/useCharacter";
 
-function Character() {
-  return <Page></Page>;
+interface ICharacterPage {}
+
+const CharacterPage: FC<ICharacterPage> = () => {
+  let { id } = useParams();
+  const { data, loading} = useCharacter(Number(id));
+
+  console.log(data, loading);
+  
+  return <Page>
+
+  </Page>;
 }
 
-export default Character;
+export default CharacterPage;

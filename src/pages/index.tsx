@@ -1,18 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Page from "../components/Page";
 import useCharacters from "../store/character/hooks/useCharacters";
 import Grid from "../components/Grid";
 import PaginationButtons from "../components/PaginationButtons";
 import Loader from "../components/Loader";
 import { useSearchCharacters } from "../store/character/hooks/useSearchCharacters";
-import { StyledContainer } from "./styles";
-function Index() {
+import { NotFound, StyledContainer } from "./styles";
+
+function IndexPage() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const { list, loading: characterLoading } = useCharacters(page);
   const [people, setPeople] = useState<any>([]);
-
-  const { list: data, loading: searchLoading } = useSearchCharacters(search);
+  const isSearchUser = search.length >= 3;
+  const { list: listSearch, loading: searchLoading } =
+    useSearchCharacters(search);
 
   const loading = characterLoading || searchLoading;
 
@@ -33,26 +35,54 @@ function Index() {
     setPeople(list.results);
   }, [list]);
 
-  console.log(search, data);
+  console.log(list)
+  const results = useMemo(() => {
+    if (loading) return <Loader />;
+
+    if (!!people?.length && !isSearchUser) {
+      return (
+        <>
+          <Grid data={people} />
+          <PaginationButtons
+            count={Math.ceil(Number(list?.count) / 10)}
+            page={page}
+            onChange={onHandleChange}
+          />
+        </>
+      );
+    }
+
+    if (listSearch?.count && isSearchUser) {
+      return (
+        <>
+          <Grid data={listSearch?.results} />
+          <PaginationButtons
+            count={Math.ceil(Number(listSearch?.count) / 10)}
+            page={page}
+            onChange={onHandleChange}
+          />
+        </>
+      );
+    }
+
+    if (isSearchUser) {
+      return (
+        <NotFound variant="body1">
+          Пользователь с таким именем не найден
+        </NotFound>
+      );
+    }
+
+    return null;
+  }, [loading, people, isSearchUser, onHandleChange, page, list]);
 
   return (
     <Page search={search} onChange={onChangeSearchInputHandler}>
       <StyledContainer>
-        {loading ? (
-          <Loader />
-        ) : (
-          <>
-            <Grid data={people} />
-            <PaginationButtons
-              count={Math.ceil(Number(list?.count) / 10)}
-              page={page}
-              onChange={onHandleChange}
-            />
-          </>
-        )}
+        {results}
       </StyledContainer>
     </Page>
   );
 }
 
-export default Index;
+export default IndexPage;

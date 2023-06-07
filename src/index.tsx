@@ -29,7 +29,7 @@ root.render(
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<IndexPage />} />
-            <Route path="/character" element={<CharacterPage />} />
+            <Route path="/character/:id" element={<CharacterPage />} />
           </Routes>
         </BrowserRouter>
       </RequestProvider>

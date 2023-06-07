@@ -16,3 +16,10 @@ export interface ICharacter {
   edited: string;
   url: string;
 }
+
+export interface IResults {
+  count: number;
+  next: string;
+  previous: string;
+  results: ICharacter[];
+}

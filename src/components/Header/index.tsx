@@ -19,6 +19,7 @@ import { IHeaderProps } from "./index.props";
 const pages = [{ text: "Character", link: "character" }];
 
 const Header: FC<IHeaderProps> = ({ children, ...props }) => {
+  const [search, setSearch] = useState("");
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {

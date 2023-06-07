@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import Page from "../components/Page";
-import usePeoples from "../store/people/hooks/usePeoples";
+import useCharacters from "../store/people/hooks/useCharacters";
 import Grid from "../components/Grid";
 import PaginationButtons from "../components/PaginationButtons";
 import Loader from "../components/Loader";
 import { StyledContainer } from "./styles";
 function Index() {
   const [page, setPage] = useState(1);
-  const { list, loading } = usePeoples(page);
+  const { list, loading } = useCharacters(page);
   const [people, setPeople] = useState<any>([]);
 
   const onHandleChange = useCallback(

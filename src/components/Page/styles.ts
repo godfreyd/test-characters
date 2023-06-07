@@ -5,3 +5,8 @@ export const StyledPage = styled.div`
   justify-content: center;
   width: 100%;
 `;
+
+export const StyledContainer = styled.div`
+  width: 1440px;
+  padding: 40px 20px;
+`;

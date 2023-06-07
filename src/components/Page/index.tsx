@@ -1,13 +1,15 @@
 import { FC } from "react";
 import Header from "../Header";
 import { IPageProps } from "./index.props";
-import { StyledPage } from "./styles";
+import { StyledContainer, StyledPage } from "./styles";
 
 const Page: FC<IPageProps> = ({ children, onChange, search }) => {
   return (
     <>
       <Header search={search} onChange={onChange} />
-      <StyledPage>{children}</StyledPage>
+      <StyledPage>
+        <StyledContainer>{children}</StyledContainer>
+      </StyledPage>
     </>
   );
 };

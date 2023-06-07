@@ -5,7 +5,7 @@ import Grid from "../components/Grid";
 import PaginationButtons from "../components/PaginationButtons";
 import Loader from "../components/Loader";
 import { useSearchCharacters } from "../store/character/hooks/useSearchCharacters";
-import { NotFound, StyledContainer } from "./styles";
+import { NotFound } from "./styles";
 
 function IndexPage() {
   const [page, setPage] = useState(1);
@@ -65,11 +65,7 @@ function IndexPage() {
     }
 
     if (isSearchUser) {
-      return (
-        <NotFound variant="body1">
-          Пользователь с таким именем не найден
-        </NotFound>
-      );
+      return <NotFound variant="body1">User not found</NotFound>;
     }
 
     return null;
@@ -77,7 +73,7 @@ function IndexPage() {
 
   return (
     <Page search={search} onChange={onChangeSearchInputHandler}>
-      <StyledContainer>{results}</StyledContainer>
+      {results}
     </Page>
   );
 }

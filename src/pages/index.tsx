@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { AlertTitle } from "@mui/material";
 import Page from "../components/Page";
 import useCharacters from "../store/character/hooks/useCharacters";
 import Grid from "../components/Grid";
@@ -6,7 +7,7 @@ import PaginationButtons from "../components/PaginationButtons";
 import Loader from "../components/Loader";
 import { useSearchCharacters } from "../store/character/hooks/useSearchCharacters";
 import Search from "../components/Search";
-import { NotFound } from "./styles";
+import { StyledAlert, StyledContainer } from "./styles";
 
 function IndexPage() {
   const [page, setPage] = useState(1);
@@ -66,7 +67,14 @@ function IndexPage() {
     }
 
     if (isSearchUser) {
-      return <NotFound variant="body1">User not found</NotFound>;
+      return (
+        <StyledContainer>
+          <StyledAlert severity="info">
+            <AlertTitle>Info</AlertTitle>
+            User not found
+          </StyledAlert>
+        </StyledContainer>
+      );
     }
 
     return null;

@@ -15,6 +15,7 @@ const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
     borderRadius: 3,
     boxShadow: 0,
   };
+  console.log("===", character);
   const urlObj = new URL(character.url);
   const id = urlObj.pathname.split("/")[3];
 

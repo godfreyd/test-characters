@@ -10,7 +10,6 @@ interface ICharacterPage {}
 const CharacterPage: FC<ICharacterPage> = () => {
   let { id } = useParams();
   const { data, loading } = useCharacter(Number(id));
-  console.log(data);
 
   return (
     <Page>

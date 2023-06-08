@@ -22,7 +22,7 @@ export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => (
     <Global
       styles={css`
         html {
-          font-family: "Roboto", sans-serif;
+          font-family: "Share Tech Mono", monospace;
         }
 
         button {

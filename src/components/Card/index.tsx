@@ -1,13 +1,12 @@
 import { FC } from "react";
-
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Avatar from "../Avatar";
+import Desc from "../Desc";
+import { StyledDesc } from "./styles";
 import { ICharacterCardProps } from "./index.props";
 
 const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
@@ -15,7 +14,6 @@ const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
     borderRadius: 3,
     boxShadow: 0,
   };
-  console.log("===", character);
   const urlObj = new URL(character.url);
   const id = urlObj.pathname.split("/")[3];
 
@@ -38,10 +36,14 @@ const CharacterCard: FC<ICharacterCardProps> = ({ character }) => {
         subheader={`Gender: ${character.gender}`}
       />
       <CardContent sx={{ p: 3 }}>
-        <Typography variant="body1" color="black" sx={{ mb: 3 }}>
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen..
-        </Typography>
+        <StyledDesc>
+          <Desc item="Height" value={character.height} />
+          <Desc item="Weight" value={character.mass} />
+          <Desc item="Date of Birth" value={character.birth_year} />
+          <Desc item="Eye color" value={character.eye_color} />
+          <Desc item="Hair color" value={character.hair_color} />
+          <Desc item="Color of the skin" value={character.skin_color} />
+        </StyledDesc>
         <Button href={`/character/${Number(id)}`}>Read more</Button>
       </CardContent>
     </Card>

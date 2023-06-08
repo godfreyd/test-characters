@@ -10,6 +10,7 @@ import Search from "../components/Search";
 import { StyledAlert, StyledContainer } from "./styles";
 
 function IndexPage() {
+  let count = 1;
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const { list, loading: characterLoading } = useCharacters(page);
@@ -34,8 +35,8 @@ function IndexPage() {
   useEffect(() => {
     if (loading || !list) return;
 
-    setPeople(list.results);
-  }, [list]);
+    setPeople(list?.results);
+  }, [list?.results, list, loading]);
 
   const results = useMemo(() => {
     if (loading) return <Loader />;
@@ -78,7 +79,16 @@ function IndexPage() {
     }
 
     return null;
-  }, [loading, people, isSearchUser, onHandleChange, page, list]);
+  }, [
+    loading,
+    people,
+    isSearchUser,
+    onHandleChange,
+    page,
+    list?.count,
+    listSearch?.count,
+    listSearch?.results,
+  ]);
 
   return (
     <Page>

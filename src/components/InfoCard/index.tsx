@@ -32,7 +32,7 @@ const InfoCard: FC<IInfoCardProps> = ({ data }) => {
           {data.name}
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          `Gender: {data.gender}`
+          Gender: {data.gender}
         </Typography>
       </Box>
       <CardContent>

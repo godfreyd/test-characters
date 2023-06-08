@@ -5,6 +5,7 @@ import Grid from "../components/Grid";
 import PaginationButtons from "../components/PaginationButtons";
 import Loader from "../components/Loader";
 import { useSearchCharacters } from "../store/character/hooks/useSearchCharacters";
+import Search from "../components/Search";
 import { NotFound } from "./styles";
 
 function IndexPage() {
@@ -72,7 +73,8 @@ function IndexPage() {
   }, [loading, people, isSearchUser, onHandleChange, page, list]);
 
   return (
-    <Page search={search} onChange={onChangeSearchInputHandler}>
+    <Page>
+      <Search search={search} onChange={onChangeSearchInputHandler} />
       {results}
     </Page>
   );

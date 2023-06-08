@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { css, Global } from "@emotion/react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "./components/Theme";
 import RequestProvider from "./services/request/provider";
 
@@ -30,6 +30,7 @@ root.render(
           <Routes>
             <Route path="/" element={<IndexPage />} />
             <Route path="/character/:id" element={<CharacterPage />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       </RequestProvider>
